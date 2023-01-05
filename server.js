@@ -4,8 +4,8 @@ const server = jsonServer.create();
 // const router = jsonServer.router("db.json");
 // const router = jsonServer.router(path.resolve(os.tmpdir() + "/db.json"));
 const path = require("path");
-const router = jsonServer.router(path.join(__dirname, "db.json"));
-const middlewares = jsonServer.defaults();
+const router = jsonServer.router(path.join("./db.json"));
+const middlewares = jsonServer.defaults({ static: "./build" });
 
 server.use(middlewares);
 // Add this before server.use(router)
