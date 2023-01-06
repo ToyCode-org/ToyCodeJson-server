@@ -1,5 +1,3 @@
-// ## 111111
-
 const fs = require("fs");
 const os = require("os");
 
@@ -11,25 +9,12 @@ fs.copyFile("db.json", os.tmpdir() + "/db.json", function (err) {
 // See https://github.com/typicode/json-server#module
 const jsonServer = require("json-server");
 const server = jsonServer.create();
+// const router = jsonServer.router("db.json");
 const path = require("path");
 const router = jsonServer.router(path.resolve(os.tmpdir() + "/db.json"));
 // const router = jsonServer.router(path.join("./db.json"));
 const middlewares = jsonServer.defaults({ static: "./build" });
 
-server.use(middlewares);
-const filePath = path.join("/tmp", "db.json");
-fs.writeFileSync(filePath, JSON.stringify(db));
-
-// ## 222222222222222
-// See https://github.com/typicode/json-server#module
-// const jsonServer = require("json-server");
-// const server = jsonServer.create();
-// // const router = jsonServer.router("db.json");
-// const path = require("path");
-// const router = jsonServer.router(path.join("./db.json"));
-// const middlewares = jsonServer.defaults({ static: "./build" });
-
-// ## default ###################
 server.use(middlewares);
 // Add this before server.use(router)
 server.use(
